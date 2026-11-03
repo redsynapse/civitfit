@@ -12,23 +12,30 @@ Image models only. Video models are filtered out.
 
 ## Install
 
+### With Cargo, straight from GitHub
+
 ```sh
-cargo install --path .
+cargo install --git https://github.com/redsynapse/civitfit
 ```
 
-That installs `civitfit` into Cargo's bin directory (usually `~/.cargo/bin`).
-After that you run it by name, just like `llmfit`:
+### From crates.io
+
+Not published yet. Once it is, the command is:
+
+```sh
+cargo install civitfit
+```
+
+### Prebuilt binary
+
+Download the binary for your platform from the Releases page, then put it on
+your `PATH`. Release binaries are not published yet.
+
+After installing with any of the above, run it by name:
 
 ```sh
 civitfit          # list models that fit this machine
 civitfit system   # show detected hardware
-```
-
-To run the build output without installing it:
-
-```sh
-cargo build --release
-./target/release/civitfit system
 ```
 
 If the shell cannot find `civitfit`, add the install directory to `PATH`:
@@ -40,6 +47,24 @@ export PATH="$HOME/.cargo/bin:$PATH"
 ```
 
 The binary has no runtime dependencies and no Python requirement.
+
+### Build from source
+
+Use this only when you have a local checkout. `--path .` means "install from
+this folder instead of a package registry":
+
+```sh
+git clone https://github.com/redsynapse/civitfit.git
+cd civitfit
+cargo install --path .
+```
+
+To run the build output without installing it:
+
+```sh
+cargo build --release
+./target/release/civitfit system
+```
 
 ### Release builds
 
