@@ -6,6 +6,7 @@ rust-version = "1.75"
 description = "Right-size Civitai image models to your hardware"
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/redsynapse/civitfit"
 exclude = ["legacy-python/**"]
 keywords = ["civitai", "stable-diffusion", "hardware", "cli", "apple-silicon"]
 categories = ["command-line-utilities"]
