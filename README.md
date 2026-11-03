@@ -12,41 +12,46 @@ Image models only. Video models are filtered out.
 
 ## Install
 
-### With Cargo, straight from GitHub
+### macOS / Linux, no Rust required
 
 ```sh
+curl -fsSL https://raw.githubusercontent.com/redsynapse/civitfit/main/install.sh | sh
+```
+
+The script detects your OS and architecture, downloads the matching binary
+from GitHub Releases, verifies its SHA-256 checksum, and installs it to
+`/usr/local/bin` when writable, otherwise `~/.local/bin`.
+
+To force a user-local install:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/redsynapse/civitfit/main/install.sh | sh -s -- --local
+```
+
+### Prebuilt binaries
+
+Download the archive for your platform from the
+[Releases](https://github.com/redsynapse/civitfit/releases) page:
+
+| Platform | Asset |
+| --- | --- |
+| macOS Apple Silicon | `civitfit-<tag>-aarch64-apple-darwin.tar.gz` |
+| macOS Intel | `civitfit-<tag>-x86_64-apple-darwin.tar.gz` |
+| Linux x86_64 | `civitfit-<tag>-x86_64-unknown-linux-gnu.tar.gz` |
+| Linux arm64 | `civitfit-<tag>-aarch64-unknown-linux-gnu.tar.gz` |
+| Windows x86_64 | `civitfit-<tag>-x86_64-pc-windows-msvc.zip` |
+
+Each archive has a matching `.sha256` file.
+
+### With Cargo
+
+```sh
+# after the crate is published to crates.io
+cargo install civitfit
+
+# or straight from GitHub, without crates.io
 cargo install --git https://github.com/redsynapse/civitfit
 ```
-
-### From crates.io
-
-Not published yet. Once it is, the command is:
-
-```sh
-cargo install civitfit
-```
-
-### Prebuilt binary
-
-Download the binary for your platform from the Releases page, then put it on
-your `PATH`. Release binaries are not published yet.
-
-After installing with any of the above, run it by name:
-
-```sh
-civitfit          # list models that fit this machine
-civitfit system   # show detected hardware
-```
-
-If the shell cannot find `civitfit`, add the install directory to `PATH`:
-
-```sh
-export PATH="$HOME/.cargo/bin:$PATH"
-# custom root, e.g. cargo install --root ~/.local:
-# export PATH="$HOME/.local/bin:$PATH"
-```
-
-The binary has no runtime dependencies and no Python requirement.
 
 ### Build from source
 
@@ -64,6 +69,20 @@ To run the build output without installing it:
 ```sh
 cargo build --release
 ./target/release/civitfit system
+```
+
+After installing with any method, run it by name:
+
+```sh
+civitfit          # list models that fit this machine
+civitfit system   # show detected hardware
+```
+
+If the shell cannot find `civitfit`, add the install directory to `PATH`:
+
+```sh
+export PATH="$HOME/.local/bin:$PATH"
+# Cargo installs: export PATH="$HOME/.cargo/bin:$PATH"
 ```
 
 ### Release builds

@@ -1,3 +1,4 @@
 /target
 /legacy-python
+/dist
 .DS_Store
