@@ -34,6 +34,16 @@ To force a user-local install:
 curl -fsSL https://raw.githubusercontent.com/redsynapse/civitfit/main/install.sh | sh -s -- --local
 ```
 
+### Windows, no Rust required
+
+```powershell
+irm https://raw.githubusercontent.com/redsynapse/civitfit/main/install.ps1 | iex
+```
+
+The script detects x86_64 or arm64, downloads the matching `.zip`, verifies its
+SHA-256 checksum, installs to `%LOCALAPPDATA%\civitfit\bin`, and adds that
+directory to the user `PATH`. Open a new terminal afterwards.
+
 ### Prebuilt binaries
 
 Download the archive for your platform from the
@@ -46,10 +56,13 @@ Download the archive for your platform from the
 | Linux x86_64 | `civitfit-<tag>-x86_64-unknown-linux-gnu.tar.gz` |
 | Linux arm64 | `civitfit-<tag>-aarch64-unknown-linux-gnu.tar.gz` |
 | Windows x86_64 | `civitfit-<tag>-x86_64-pc-windows-msvc.zip` |
+| Windows arm64 | `civitfit-<tag>-aarch64-pc-windows-msvc.zip` |
 
 Each archive has a matching `.sha256` file.
 
-### With Cargo
+### With Cargo (Rust users)
+
+Cargo is optional. End users do not need a Rust toolchain.
 
 ```sh
 # after the crate is published to crates.io
