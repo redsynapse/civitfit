@@ -71,7 +71,8 @@ jobs:
           Copy-Item README.md, LICENSE "dist/$name/"
           Compress-Archive -Path "dist/$name" -DestinationPath "dist/$name.zip"
           $hash = (Get-FileHash "dist/$name.zip" -Algorithm SHA256).Hash.ToLower()
-          "$hash  $name.zip" | Out-File -Encoding ascii "dist/$name.zip.sha256"
+          $line = "$hash  $name.zip"
+          [System.IO.File]::WriteAllText((Join-Path (Get-Location) "dist/$name.zip.sha256"), "$line`n")
 
       - uses: actions/upload-artifact@v4
         with:
