@@ -14,10 +14,29 @@ Image models only. Video models are filtered out.
 
 ```sh
 cargo install --path .
+```
 
-# or run the release build directly
+That installs `civitfit` into Cargo's bin directory (usually `~/.cargo/bin`).
+After that you run it by name, just like `llmfit`:
+
+```sh
+civitfit          # list models that fit this machine
+civitfit system   # show detected hardware
+```
+
+To run the build output without installing it:
+
+```sh
 cargo build --release
 ./target/release/civitfit system
+```
+
+If the shell cannot find `civitfit`, add the install directory to `PATH`:
+
+```sh
+export PATH="$HOME/.cargo/bin:$PATH"
+# custom root, e.g. cargo install --root ~/.local:
+# export PATH="$HOME/.local/bin:$PATH"
 ```
 
 The binary has no runtime dependencies and no Python requirement.
