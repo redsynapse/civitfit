@@ -22,6 +22,16 @@ cargo build --release
 
 The binary has no runtime dependencies and no Python requirement.
 
+### Release builds
+
+Local source paths can end up in panic metadata. Remap them when building a
+binary you plan to distribute:
+
+```sh
+RUSTFLAGS="--remap-path-prefix=$HOME=/build --remap-path-prefix=$PWD=/civitfit" \
+  cargo build --release
+```
+
 ## Quick start
 
 ```sh
