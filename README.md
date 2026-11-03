@@ -12,6 +12,12 @@ Image models only. Video models are filtered out.
 
 ## Install
 
+### Homebrew (macOS and Linux)
+
+```sh
+brew install redsynapse/tap/civitfit
+```
+
 ### macOS / Linux, no Rust required
 
 ```sh
